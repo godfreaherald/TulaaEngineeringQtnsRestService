@@ -20,12 +20,12 @@ public class ServiceDAOImpl implements ServiceDAO {
 	@Override
 	public boolean isValidParenthesisString(String s) {
 		
-		HashMap<Character, Character> map = new HashMap<Character, Character>();
+		HashMap<Character, Character> mapp = new HashMap<Character, Character>();
 		
-		/* pass the expected string characters as key value in a hashmap */
-			map.put('(', ')');  
-			map.put('[', ']');
-			map.put('{', '}');
+		/* pass the expected string characters as key value in a hashmapp */
+			mapp.put('(', ')');  
+			mapp.put('[', ']');
+			mapp.put('{', '}');
 			
 			/* create a stack for storing and comparing the string characters 
 			 * during string traversal
@@ -36,18 +36,18 @@ public class ServiceDAOImpl implements ServiceDAO {
 			for (int i = 0; i < s.length(); i++) {
 				char curr = s.charAt(i);    /* get the current character */
 		 
-				if (map.keySet().contains(curr)) {  /*check if the current character is opening parenthesis and push it to the stack*/
+				if (mapp.keySet().contains(curr)) {  /*check if the current character is opening parenthesis and push it to the stack*/
 					stack.push(curr);
 					
 					/*check if the current character is closing parenthesis*/
-				} else if (map.values().contains(curr)) { 
+				} else if (mapp.values().contains(curr)) { 
 					
 					/*check if the stack is empty and the top object 
 					 * in the stack is equal to the current element of the 
-					 * string passed and the is contained it the map
+					 * string passed and the is contained it the mapp
 					 * and  remove the element from the stack 
 					 * */
-					if (!stack.empty() && map.get(stack.peek()) == curr) { 
+					if (!stack.empty() && mapp.get(stack.peek()) == curr) { 
 						stack.pop();   
 					} else {
 						return false;
